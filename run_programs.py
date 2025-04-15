@@ -1,5 +1,4 @@
 import interpreter
-import os
 
 def run_spell_file(filename):
     print(f"\n✨ Running {filename}...\n{'-' * 47}")
@@ -8,16 +7,16 @@ def run_spell_file(filename):
             code = f.read()
             interpreter.run_spellscript(code)
     except FileNotFoundError:
-        print(f"⚠️ File {filename} not found.")
+        print(f" File {filename} not found.")
     except Exception as e:
         print(f"❌ Error running {filename}: {e}")
 
 if __name__ == "__main__":
     spell_files = [
-        #"helloworld.ss",
-        #"cat.ss",
-        #"multiply.ss",
-        #"repeater.ss",
+        "helloworld.ss",
+        "cat.ss",
+        "multiply.ss",
+        "repeater.ss",
         "reversestring.ss"
     ]
 
