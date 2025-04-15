@@ -1,5 +1,3 @@
-# Re-defining the interpreter functions after code execution state reset
-
 import sys
 import re
 
@@ -39,14 +37,26 @@ def interpret(lines):
             if len(parts) == 2:
                 var_name = parts[0].strip()
                 expression = parts[1].strip()
-                try:
-                    value = eval(expression, {}, variables)
-                    variables[var_name] = value
-                except Exception as e:
-                    print(f"Error in creo expression: {expression} — {e}")
+
+                # Check if expression is a function name
+                if expression.strip() in functions:
+                    # Execute the function
+                    function_block = functions[expression.strip()]
+
+                    # Store the function's return value
+                    return_value = interpret(function_block)
+
+                    # Assign the return value to the variable
+                    if return_value is not None:
+                        variables[var_name] = return_value
+                else:
+                    try:
+                        value = eval(expression, {}, variables)
+                        variables[var_name] = value
+                    except Exception as e:
+                        print(f"Error in creo expression: {expression} — {e}")
             else:
                 print(f"Invalid creo syntax: {line}")
-
 
         # Input
         elif line.startswith("accio"):
@@ -66,7 +76,6 @@ def interpret(lines):
         elif line.startswith("revelio"):
             expr = line[len("revelio"):].strip()
             try:
-                # Evaluate using variables in context
                 result = eval(expr, {}, variables)
                 print(result)
             except TypeError:
@@ -79,14 +88,11 @@ def interpret(lines):
                         evaluated += str(part)
                     print(evaluated)
                 except Exception as e:
-                    print(f"❌ Error in revelio expression: {expr} — {e}")
+                    print(f"Error in revelio expression: {expr} — {e}")
             except Exception as e:
-                print(f"❌ Error in revelio: {expr} — {e}")
+                print(f"Error in revelio: {expr} — {e}")
 
-
-
-
-        # If condition
+        # If condition statement
         elif line.startswith("si"):
             condition = line[2:].strip()
             if condition.endswith("<~"):
@@ -122,14 +128,27 @@ def interpret(lines):
         # Function definition
         elif line.startswith("expecto"):
             header = line[7:].strip()
-            fname = header
+            fname = header.split()[0]  # Extract the function name
             block, jump = extract_block(lines, i + 1)
-            functions[fname] = block
+            functions[fname] = block  # Register the function in the dictionary
             i = jump
 
         # Function call
         elif line in functions:
-            interpret(functions[line])
+            # Save the current variables state before function execution
+            function_block = functions[line]
+
+            # Create a copy of the global variables before function execution
+            previous_variables = variables.copy()
+
+            # Interpret the function body with access to global variables
+            interpret(function_block)
+
+            # Update global variables with changes from the function
+            for key, value in variables.items():
+                previous_variables[key] = value
+            variables.clear()
+            variables.update(previous_variables)
 
         # Return
         elif line.startswith("reversio"):
