@@ -1,1 +1,1 @@
-revelio "Hello Hogwarts!"
+revelio "Hello Wizarding World!"
