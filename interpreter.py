@@ -143,12 +143,30 @@ def interpret(lines):
 
         # Branch
         elif line.startswith("ramus"):
-            condition_label = line[len("ramus"):].strip()
-            cond_match = re.match(r"(.*?)<~", condition_label)
-            if cond_match:
-                condition = cond_match.group(1).strip()
+            condition_line = line[len("ramus"):].strip()
+
+            # Check for inline block (e.g., @[ ... ]@)
+            if "@[" in condition_line:
+                condition, _ = condition_line.split("@[", 1)
+                condition = condition.strip()
+
+                # Find the block
+                block_start = i + 1
+                block_end = block_start
+                while block_end < len(lines) and not lines[block_end].strip().endswith("]@"):
+                    block_end += 1
+
                 if eval_expr(condition):
-                    label = condition_label.split("<~")[-1].strip()
+                    interpret(lines[block_start:block_end])
+                i = block_end + 1
+                continue
+
+            # Label-style branch
+            elif "<~" in condition_line:
+                condition, label = condition_line.split("<~", 1)
+                condition = condition.strip()
+                label = label.strip()
+                if eval_expr(condition):
                     i = find_label(lines, label)
                     continue
         i += 1

@@ -14,11 +14,11 @@ def run_spell_file(filename):
 
 if __name__ == "__main__":
     spell_files = [
-        "helloworld.ss",
-        "cat.ss",
-        "multiply.ss",
-        "repeater.ss",
-        #"reversestring.ss"
+        #"helloworld.ss",
+        #"cat.ss",
+        #"multiply.ss",
+        #"repeater.ss",
+        "reversestring.ss"
     ]
 
     for spell_file in spell_files:

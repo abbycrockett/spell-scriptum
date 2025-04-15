@@ -14,14 +14,15 @@ locus i < snooze_count @[
 revelio output
 
 /* Branch depending on snooze_count */
-ramus snooze_count > 20 @[
-  revelio "Success! Fluffy is now peacefully sleeping."
-  salto done
-]@
+ramus snooze_count > 20 <~ fluffy_sleeps
+ramus snooze_count <= 20 <~ fluffy_awake
 
-ramus snooze_count <= 20 @[
-  revelio "Fluffy is still awake and is guarding the Philosopher's Stone!"
-]@
+@[fluffy_sleeps]@
+revelio "Success! Fluffy is now peacefully sleeping."
+salto done
+
+@[fluffy_awake]@
+revelio "Fluffy is still awake and is guarding the Philosopher's Stone!"
 
 @[done]@
 
