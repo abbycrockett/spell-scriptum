@@ -1,6 +1,6 @@
 # SpellScriptum: A Harry Potter-Inspired Interpreted Language
 
-SpellScriptum is an interpreted, esoteric programming language inspired by the Harry Potter book series. It allows users to write scripts using spell-like commands derived from Latin. To "cast" your first script, open `run_programs.py` in an IDE that supports Python, such as PyCharm, and run the script.
+SpellScriptum is an interpreted, esoteric programming language inspired by the Harry Potter book series. It allows users to write scripts using spell-like commands derived from Latin. To "cast" your first script, open `run_scripts.py` in an IDE that supports Python, such as PyCharm, and run the examples.
 
 ## 📌 Features Overview
 - **Input/Output**: Use `accio` to retrieve user input and `revelio` to reveal output.
@@ -12,17 +12,17 @@ SpellScriptum is an interpreted, esoteric programming language inspired by the H
 ---
 
 ## ✨ SpellScriptum Guide
-| **Spell**   | **Pronunciation (Latin)** | **Meaning**                              |
-|-------------|---------------------------|------------------------------------------|
-| `accio`     | AHK-ee-oh                 | Get user input                           |
-| `creo`      | KRAY-oh                   | Create a variable                        |
-| `expecto`   | eks-PEK-toh               | Define a function                        |
-| `locus`     | LOH-koos                  | While loop                               |
-| `ramus`     | RAH-moos                  | Branch                                   |
-| `revelio`   | reh-VEL-ee-oh             | Print output to the screen               |
-| `reversio`  | reh-VER-see-oh            | Return a value from a function           |
-| `salto`     | SAHL-toh                  | Jump to a specific label in the code     |
-| `si`        | see                       | If condition                             |
+| **Spell**   | **Pronunciation (Latin)** | **Meaning**                           |
+|-------------|---------------------------|---------------------------------------|
+| `accio`     | AHK-ee-oh                 | Summons user input                    |
+| `creo`      | KRAY-oh                   | Creates a variable                    |
+| `expecto`   | eks-PEK-toh               | Expects a function                    |
+| `locus`     | LOH-koos                  | While loop                            |
+| `ramus`     | RAH-moos                  | Branch                                |
+| `revelio`   | reh-VEL-ee-oh             | Reveals output on the screen          |
+| `reversio`  | reh-VER-see-oh            | Returns a value from a function       |
+| `salto`     | SAHL-toh                  | Jumps to a specific label in the code |
+| `si`        | see                       | If condition                          |
 
 ## 🧙‍♂️ Special Syntax
 | **Symbol** | **Usage**                     | **Meaning**                                               |
@@ -36,15 +36,15 @@ SpellScriptum is an interpreted, esoteric programming language inspired by the H
 ## 🗂️ Project Structure
 ```text
 spell-scriptum/
-├── interpreter.py       # Core interpreter logic
-├── run_programs.py      # Start here to execute all the spells
-├── programs/            # SpellScriptum scripts
+├── spellscriptum.py    # Core interpreter logic
+├── run_scripts.py      # Start here to execute all the spells
+├── scripts/            # SpellScriptum scripts
 │   ├── helloworld.ss
 │   ├── reversestring.ss
 │   ├── multiply.ss
 │   ├── repeater.ss
 │   └── cat.ss
-└── README.md            # The file you are reading now
+└── README.md           # The file you are reading now
 ```
 
 ---

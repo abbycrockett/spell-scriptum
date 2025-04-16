@@ -1,15 +1,15 @@
-import interpreter
+import spellscriptum
 import os
 
 def run_spell_file(filename):
-    # Construct path to file in the programs folder
-    file_path = os.path.join("programs", filename)
+    # Builds a path to the example scripts folder
+    file_path = os.path.join("scripts", filename)
 
     print(f"\n✨ Running {filename}...\n{'-' * 47}")
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             code = f.read()
-            interpreter.run_spellscript(code)
+            spellscriptum.run_spellscript(code)
     except FileNotFoundError:
         print(f"File {file_path} not found.")
     except Exception as e:
@@ -17,7 +17,7 @@ def run_spell_file(filename):
 
 
 if __name__ == "__main__":
-    spell_files = [
+    spell_files = [ # these are just the examples in the scripts folder
         "helloworld.ss",
         "cat.ss",
         "multiply.ss",

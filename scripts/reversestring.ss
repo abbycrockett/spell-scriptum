@@ -1,20 +1,20 @@
-/* Define the function reverseString using expecto */
+/* Defines the function reverseString */
 expecto reverseString <~
   creo length = len(original)
   creo index = length - 1
   creo reversed = ""
 
-  /* Loop backward through the original string */
+  /* Loops backward through the original string */
   locus index >= 0 @[
     creo reversed = reversed + original[index]
     creo index = index - 1
   ]@
 
-  /* Return the result */
+  /* Returns the result */
   reversio reversed
 ~>
 
-/* User Input & Response */
+/* Summons User Input & Reverses the original input */
 accio "Enter a word to reverse:" -> original
 creo result = reverseString
 revelio "Your reversed string:"

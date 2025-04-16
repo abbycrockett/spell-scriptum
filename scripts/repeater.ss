@@ -10,10 +10,10 @@ locus i < snooze_count @[
   creo i = i + 1
 ]@
 
-/* Print all z's at once */
+/* Print all z's so the user can get a visual representation */
 revelio output
 
-/* Branch depending on snooze_count */
+/* Determines whether Fluffy sleeps depending on snooze_count using branching */
 ramus snooze_count > 20 <~ fluffy_sleeps
 ramus snooze_count <= 20 <~ fluffy_awake
 
