@@ -1,16 +1,16 @@
-accio "How many zzz's do you need to print? " -> snooze_count
+accio "Choose a character to cast repeatedly to put Fluffy to sleep:" -> repeat_char
+accio "How many times do you think you need to cast the spell? " -> snooze_count
 
 creo i = 0
-creo z = "z"
 creo output = ""
 
-/* Build a string with the right number of z's */
+/* Build the repeated string */
 locus i < snooze_count @[
-  creo output = output + z
+  creo output = output + repeat_char
   creo i = i + 1
 ]@
 
-/* Print all z's so the user can get a visual representation */
+/* Print all the characters so the user can get a visual representation */
 revelio output
 
 /* Determines whether Fluffy sleeps depending on snooze_count using branching */
